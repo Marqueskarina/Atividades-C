@@ -1,20 +1,17 @@
-nome = input("Digite o nome da pessoa: ")
-endereco = input("Digite o endereço da pessoa: ")
-telefone = input("Digite o telefone da pessoa: ")
+string_1 = input("Digite a primeira string (até 100 caracteres): ")
+string_2 = input("Digite a segunda string: ")
 
-# Concatena as três informações em uma única string
-info_pessoa = nome + " " + endereco + " " + telefone
+# Verifica se a primeira string tem até 100 caracteres
+if len(string_1) > 100:
+    print("A primeira string deve ter no máximo 100 caracteres.")
+else:
+    # Inicializa a variável de contagem
+    ocorrencias = 0
 
-# Inicializa as variáveis de contagem
-num_letras = 0
-num_digitos = 0
+    # Itera sobre cada caractere da primeira string, buscando a segunda string
+    for i in range(len(string_1) - len(string_2) + 1):
+        if string_1[i:i+len(string_2)] == string_2:
+            ocorrencias += 1
 
-# Itera sobre cada caractere da string, verificando se é letra ou dígito
-for caractere in info_pessoa:
-    if caractere.isalpha():
-        num_letras += 1
-    elif caractere.isdigit():
-        num_digitos += 1
-
-# Exibe os resultados
-print("A informação concatenada contém", num_letras, "letras e", num_digitos, "dígitos.")
+    # Exibe o resultado
+    print("A segunda string ocorre", ocorrencias, "vezes na primeira string.")
